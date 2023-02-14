@@ -43,7 +43,7 @@ class OTScraper:
         res = self.session.get(url, params=self.params, cookies=self.cookies, headers=self.headers)
         # print(f"HTTP get request to url '{url}' | status code {res.status_code}")
         self.page_htm = res.text
-        self.bts = BeautifulSoup(self.page_htm, 'lxml')
+        self.bts = BeautifulSoup(self.page_htm, 'html.parser')
         return True
 
 async def FetchCodeForcesProblem(url, sc):

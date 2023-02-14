@@ -14,7 +14,7 @@ import aiofiles as aiof
 async def get_salary():
     salary_url = "https://tahanima.github.io/2021/09/12/monetary-compensation-at-various-software-companies-of-bangladesh-for-an-entry-level-position/"
     salary_res = requests.get(salary_url)
-    salary_bts = BeautifulSoup(salary_res.text, 'lxml')
+    salary_bts = BeautifulSoup(salary_res.text, 'html.parser')
 
     all_companies = salary_bts.find("tbody").find_all("tr")
     software_company_details_bd = dict()
@@ -51,7 +51,7 @@ async def get_salary():
 async def get_profile():
     company_profile_url = "https://tahanima.github.io/2022/04/01/profile-of-software-companies-of-bd/"
     company_profile_res = requests.get(company_profile_url)
-    company_profile_bts = BeautifulSoup(company_profile_res.text, 'lxml')
+    company_profile_bts = BeautifulSoup(company_profile_res.text, 'html.parser')
 
     all_companies_info = company_profile_bts.find("table").find_all("tr")
     company_profile = list()
